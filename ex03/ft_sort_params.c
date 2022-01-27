@@ -54,26 +54,30 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, const char **argv)
 {
 	int	i;
 	int	j;
+	int	tab [argc];
+	int	c;
 
+	c = 1;
 	i = 1;
-	j = 0;
-	if (argc > 1)
+	while (c < argc)
 	{
-		while (i < argc)
+		tab[c] = c;
+		c++;
+	}
+	while (i < argc)
+	{
+		j = i;
+		while (d < argc)
 		{
-			j = 0;
-			while (argv[i][j] != '\0')
-			{
-				write(1, &argv[i][j], 1);
-				j++;
-			}
-			write(1, "\n", 1);
-			i++;
+			if (ft_strcmp(argv[tab[i]], argv[tab[j]]) > 0)
+				ft_swap(&tab[i], &argv[j]);
+			j++;
 		}
+		ft_putstr(argv[arg[i++]]);
 	}
 	return (0);
 }
