@@ -14,70 +14,61 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putstr(char *str)
 {
-	char	a;
-
-	while (true)
+	while (*str != '\0')
 	{
-		a = *str;
-		if (a == '\0')
-		{
-			break ;
-		}
-		ft_putchar(a);
+		write(1, str, 1);
 		str++;
 	}
-}
-
-void	ft_swap(int *a, int *b)
-{
-	int	c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
+	write(1, "\n", 1);
+	return ;
 }
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 != '\0' && (*s1 == *s2))
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && (s1[i] == s2[i]))
 	{
-		s1++;
-		s2++;
+		i++;
 	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	return (s1[i] - s2[i]);
 }
 
-int	main(int argc, const char **argv)
+void	ft_sort(char *tab[], int s)
 {
-	int	i;
-	int	j;
-	int	tab [argc];
-	int	c;
+	int		i;
+	int		j;
+	char	*temp;
 
-	c = 1;
 	i = 1;
-	while (c < argc)
+	while (i < s)
 	{
-		tab[c] = c;
-		c++;
-	}
-	while (i < argc)
-	{
-		j = i;
-		while (d < argc)
+		j = i + 1;
+		while (j < s)
 		{
-			if (ft_strcmp(argv[tab[i]], argv[tab[j]]) > 0)
-				ft_swap(&tab[i], &argv[j]);
+			if (ft_strcmp(tab[j], tab[i]) < 0)
+			{
+				temp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = temp;
+			}
 			j++;
 		}
-		ft_putstr(argv[arg[i++]]);
+		i++;
 	}
+	return ;
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	ft_sort(av, ac);
+	while (i <= ac - 1)
+		ft_putstr(av[i++]);
 	return (0);
 }
