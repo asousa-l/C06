@@ -21,10 +21,13 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	argc = 0;
-	(void) argv;
-	ft_putstr(argv[0]);
+	if (ac > 0)
+	{
+		(void) av;
+		ft_putstr(av[0]);
+	}
+	write(1, "\n", 1);
 	return (0);
 }
